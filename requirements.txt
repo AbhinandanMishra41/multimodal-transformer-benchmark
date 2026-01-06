@@ -1,0 +1,7 @@
+torch>=2.5
+onnx>=1.15
+onnxruntime>=1.17
+numpy>=1.26
+matplotlib>=3.8
+pytest>=8.0
+jupyter

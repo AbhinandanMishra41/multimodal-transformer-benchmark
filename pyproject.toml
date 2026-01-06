@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multimodal-transformer-benchmark"
+version = "0.2.0"
+description = "Small vision-language transformer written in plain PyTorch, plus inference benchmarks (KV cache, paged KV cache, ONNX int8, TensorRT, vLLM)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Abhinandan Mishra" }]
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.5",  # torch.onnx.export(dynamo=...) and torch.amp.GradScaler("cuda")
+    "onnx>=1.15",
+    "onnxruntime>=1.17",  # for GPU: pip uninstall onnxruntime && pip install onnxruntime-gpu
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "jupyter"]
+gpu = ["tensorrt>=10.0", "vllm>=0.6"]  # vllm is Linux-only
+
+[project.urls]
+Repository = "https://github.com/AbhinandanMishra41/multimodal-transformer-benchmark"
+
+[project.scripts]
+vlm-bench = "benchmark.runner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

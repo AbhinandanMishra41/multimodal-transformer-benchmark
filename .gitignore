@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# exported models - regenerate with `python -m benchmark.runner`
+artifacts/
+*.onnx
+*.engine
+*.bin
+*.safetensors
+*.npy
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
